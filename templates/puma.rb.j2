@@ -1,0 +1,11 @@
+threads 1,8
+workers 3
+daemonize
+bind 'tcp://0.0.0.0:{{ laclasse_adminpanel_port }}'
+environment '{{ laclasse_environment }}'
+directory '/home/{{ laclasse_adminpanel_deploy_user }}/laclasse-adminpanel/'
+pidfile '{{ laclasse_pid_dir }}/laclasse-adminpanel/puma.pid'
+state_path '{{ laclasse_pid_dir }}/laclasse-adminpanel/puma.state'
+activate_control_app 'tcp://0.0.0.0:{{ laclasse_adminpanel_port + 1 }}', { auth_token: '{{ laclasse_puma_auth_token }}' }
+stdout_redirect '{{ laclasse_log_parent_dir }}/laclasse-adminpanel/puma.log', '{{ laclasse_log_parent_dir }}/laclasse-adminpanel/puma_error.log', true
+tag 'puma-laclasse-adminpanel'

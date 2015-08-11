@@ -1,0 +1,3 @@
+- name: ansible-ruby-compiled
+  src: https://github.com/erasme/ansible-ruby-compiled.git
+

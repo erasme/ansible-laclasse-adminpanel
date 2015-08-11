@@ -1,0 +1,61 @@
+# General parameters
+
+laclasse_environment: 'development'
+laclasse_log_parent_dir: /var/log
+laclasse_main_domain: "www.laclasse.com"
+laclasse_main_url: http://www.example.org
+laclasse_pid_dir: /var/run/
+
+## Token for daemon communication
+laclasse_puma_auth_token: somerandomtoken
+
+## Slack reporting
+laclasse_slack:
+  host: false
+  token: none
+  channel: none
+
+## Logstash logging
+logstash_server: logstash.example.org
+logstash_udp_json_port: 1234
+
+## Redis server parameters
+laclasse_redis_server: redis.example.org
+laclasse_redis_port: 6379
+laclasse_redis_root: 'org:example:laclasse'
+
+# Other required laclasse apps parameters
+laclasse_annuaire_app_component: 'app'
+laclasse_annuaire_endpoint_diffusion_info: 'diffusionInfo'
+laclasse_annuaire_endpoint_personnel: 'etablissements'
+laclasse_annuaire_endpoint_profils: 'profils'
+laclasse_annuaire_endpoint_publipostage: 'publipostages'
+laclasse_annuaire_endpoint_regroupements: 'regroupements'
+laclasse_annuaire_endpoint_user: 'users/'
+laclasse_annuaire_main_path: 'api'
+
+## CAS server definitions
+laclasse_sso_disable_ssl_verification: 'false'
+laclasse_sso_login_url: '/login'
+laclasse_sso_logout_url: '/logout'
+laclasse_sso_logout_saml: '/saml/logout'
+laclasse_sso_port: 443
+laclasse_sso_restmod_url: '/restmod'
+laclasse_sso_server: "{{ laclasse_main_domain }}"
+laclasse_sso_service_validate_url: '/service_validate'
+laclasse_sso_ssl: 'true'
+laclasse_adminpanel_deploy_user: false
+laclasse_adminpanel_packages: []
+laclasse_adminpanel_port: 9282
+laclasse_adminpanel_repos: 'https://github.com/laclasse-com/service-admin-panel.git'
+laclasse_adminpanel_ruby_version: "{{ laclasse_ruby_version | default('2.2.2') }}"
+laclasse_adminpanel_session_key: false
+laclasse_adminpanel_version: false
+
+laclasse_services:
+  adminpanel:
+    api_mode: 'v3'
+    path: '/'
+    title: "Admin panel"
+    description: "Adminpanel"
+

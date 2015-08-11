@@ -1,0 +1,8 @@
+- name: Checking that required variables are set
+  fail: msg="{{ item }} is not defined"
+  when: not {{ item }}
+  with_items:
+    - laclasse_adminpanel_deploy_user
+    - laclasse_adminpanel_session_key
+    - laclasse_adminpanel_version
+    - laclasse_annuaire_aaf_url

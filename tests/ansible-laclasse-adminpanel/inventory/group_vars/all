@@ -1,0 +1,46 @@
+# -*- mode: yaml -*-
+# DO NOT user root as database user
+# It will drop it's own rights on the mysql table !
+
+ruby_deploy_user: "{{ci_user}}"
+
+laclasse_redis_server: localhost
+
+## Slack reporting
+laclasse_slack: false
+
+## Logstash logging
+logstash_server: logstash.example.org
+logstash_udp_json_port: 1234
+
+## Redis server parameters
+laclasse_redis_server: redis.example.org
+laclasse_redis_port: 6379
+laclasse_redis_root: 'org:example:laclasse'
+
+# Other required laclasse apps parameters
+laclasse_annuaire_app_component: 'app'
+laclasse_annuaire_endpoint_diffusion_info: 'diffusionInfo'
+laclasse_annuaire_endpoint_personnel: 'etablissements'
+laclasse_annuaire_endpoint_profils: 'profils'
+laclasse_annuaire_endpoint_publipostage: 'publipostages'
+laclasse_annuaire_endpoint_regroupements: 'regroupements'
+laclasse_annuaire_endpoint_user: 'users/'
+laclasse_annuaire_main_path: 'api'
+
+
+laclasse_adminpanel_deploy_user: false
+laclasse_adminpanel_packages: []
+laclasse_adminpanel_port: 9282
+laclasse_adminpanel_repos: 'https://github.com/laclasse-com/service-admin-panel.git'
+laclasse_adminpanel_ruby_version: "{{ laclasse_ruby_version | default('2.2.2') }}"
+laclasse_adminpanel_session_key: false
+laclasse_adminpanel_version: false
+
+laclasse_services:
+  adminpanel:
+    api_mode: 'v3'
+    path: '/'
+    title: "Admin panel"
+    description: "Adminpanel"
+

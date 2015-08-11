@@ -1,0 +1,31 @@
+- name: Restart laclasse-adminpanel
+  service: name=laclasse-adminpanel state=restarted
+  notify: Check laclasse-adminpanel
+
+- name: Check laclasse-adminpanel
+  wait_for: port={{ laclasse_adminpanel_port }} delay=5 timeout=10
+  register: check
+  changed_when: true
+  ignore_errors: true
+  notify: 
+    - Send success notification message via Slack
+    - Send failure notification message via Slack
+
+- name: Send success notification message via Slack
+  when: check|success
+  local_action:
+    module: slack
+    domain: "{{ laclasse_slack.host }}"
+    token: "{{ laclasse_slack.token }}"
+    msg: "adminpanel (version {{ git_tag.stdout }}) successfully deployed on {{ inventory_hostname }} :thumbsup:"
+    channel: "{{ laclasse_slack.channel }}"
+
+- name: Send failure notification message via Slack
+  when: check|failed
+  local_action:
+    module: slack
+    domain: "{{ laclasse_slack.host }}"
+    token: "{{ laclasse_slack.token }}"
+    msg: "WARNING : failed to deploy adminpanel (version {{ git_tag.stdout }}) on {{ inventory_hostname }} :warning:"
+    channel: "{{ laclasse_slack.channel }}"
+

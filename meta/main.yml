@@ -1,0 +1,8 @@
+dependencies:
+  - role: ansible-ruby-compiled
+    src: https://github.com/erasme/ansible-ruby-compiled.git
+    ruby_version: "{{ laclasse_adminpanel_ruby_version }}"
+    ruby_default: "{{ laclasse_adminpanel_ruby_version }}"
+    ruby_deploy_user: "{{ laclasse_adminpanel_deploy_user }}"
+    tags: laclasse:adminpanel
+    when: '"{{ laclasse_adminpanel_ruby_version }}" != "system"'

@@ -1,0 +1,17 @@
+'use strict';
+/* service Application Constants */
+angular.module('services.constants',[]);
+
+angular.module('services.constants').constant('SERVICE_URL', '{{ laclasse_main_domain }}/{{ laclasse_services.annuaire.path | regex_replace('^\/', '') }}');
+
+angular.module('services.constants').constant('ENT_URL', '{{ laclasse_annuaire_aaf_url }}/');
+
+angular.module('services.constants').constant('UPLOAD_URL', '{{laclasse_main_domain}}/{{laclasse_services.annuaire.path | regex_replace('^\/', '') }}');
+angular.module('services.constants').constant('HOST', '{{laclasse_main_domain}}')
+angular.module('services.constants').constant('ADMIN_ETAB', 'ADM_ETB'); // default role for admin etablissement
+/* constant for static pages routing */
+angular.module('services.constants').constant('APPLICATION_PREFIX_URL', '{{laclasse_services.adminpanel.path }}');
+angular.module('services.constants').constant('BASE_URL', '{{laclasse_main_domain}}/{{laclasse_services.adminpanel.path | regex_replace('^\/', '') | regex_replace('\/$', '')}}/auth/cas');
+
+angular.module('services.constants').constant('GIT_COMMIT', '{{git_tag.stdout}}');
+angular.module('services.constants').constant('ENV', '{{laclasse_environment}}');

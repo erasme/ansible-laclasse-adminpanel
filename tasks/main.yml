@@ -1,0 +1,25 @@
+- name: Send notification message via Slack
+  local_action:
+    module: slack
+    domain: "{{ laclasse_slack.host }}"
+    token: "{{ laclasse_slack.token }}"
+    msg: "3...2...1... adminpanel v{{ laclasse_adminpanel_version }} @ {{ inventory_hostname }} :rocket: "
+    channel: "{{ laclasse_slack.channel }}"
+  ignore_errors: true
+  when: laclasse_slack
+  tags: [ 'laclasse', 'laclasse:adminpanel' ]
+
+- include: check_vars.yml tags=laclasse:adminpanel,adminpanel,check
+- include: adminpanel.yml tags=laclasse:adminpanel,adminpanel
+
+- name: Send notification message via Slack
+  local_action:
+    module: slack
+    domain: "{{ laclasse_slack.host }}"
+    token: "{{ laclasse_slack.token }}"
+    msg: "adminpanel (version {{ git_tag.stdout }} successfully deployed on {{ inventory_hostname }} :thumbsup:"
+    channel: "{{ laclasse_slack.channel }}"
+  when: laclasse_slack   
+  ignore_errors: true
+  tags: [ 'laclasse', 'laclasse:adminpanel' ]
+
