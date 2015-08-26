@@ -46,7 +46,7 @@ laclasse_sso_service_validate_url: '/service_validate'
 laclasse_sso_ssl: 'true'
 laclasse_adminpanel_deploy_user: false
 laclasse_adminpanel_packages: []
-laclasse_adminpanel_port: 9282
+laclasse_adminpanel_port: 42610
 laclasse_adminpanel_repos: 'https://github.com/laclasse-com/service-admin-panel.git'
 laclasse_adminpanel_ruby_version: "{{ laclasse_ruby_version | default('2.2.2') }}"
 laclasse_adminpanel_session_key: false
